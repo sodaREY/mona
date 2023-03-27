@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="756300a375904523a9a9dfa6631abf27" Name="Diagram1">
+        <EntityTypeShape EntityType="Molochnikov11Model.Disciplin" Width="1.5" PointX="5.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Molochnikov11Model.Journal" Width="1.5" PointX="8" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Molochnikov11Model.Students" Width="1.5" PointX="5.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Molochnikov11Model.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Molochnikov11Model.Автомобили" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Molochnikov11Model.марка_автомобиля" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Molochnikov11Model.Покупатели" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="Molochnikov11Model.Продажа_автомобилей" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Molochnikov11Model.Сотрудник" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Molochnikov11Model.viduslugy" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Molochnikov11Model.Квартиросъёмщики1" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Molochnikov11Model.Коммунальные_услуги1" Width="1.5" PointX="9.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="Molochnikov11Model.FK_Journal_Disciplin" ManuallyRouted="false" />
+        <AssociationConnector Association="Molochnikov11Model.FK_Journal_Students" ManuallyRouted="false" />
+        <AssociationConnector Association="Molochnikov11Model.FK__Автомобил__Марка__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="Molochnikov11Model.FK__Продажа_а__Автом__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="Molochnikov11Model.FK__Продажа_а__Покуп__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="Molochnikov11Model.FK__Продажа_а__Сотру__5812160E" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

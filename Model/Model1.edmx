@@ -1,0 +1,705 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище Molochnikov11Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Disciplin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="grade" Type="nvarchar" MaxLength="50" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Journal">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="students" Type="int" />
+          <Property Name="disciplin" Type="int" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar" MaxLength="100" />
+          <Property Name="login" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Molochnikov11.dbo.viduslugy" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="viduslugy">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="viduskugi" />
+            <PropertyRef Name="countonmetr" />
+            <PropertyRef Name="counton1chel" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="viduskugi" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="countonmetr" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="counton1chel" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Автомобили">
+          <Key>
+            <PropertyRef Name="Код_автомобиля" />
+          </Key>
+          <Property Name="Код_автомобиля" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Название_автомобиля" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Марка" Type="int" Nullable="false" />
+          <Property Name="Год_производства" Type="datetime" Nullable="false" />
+          <Property Name="Цвет" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Категория" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Цена" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Molochnikov11.dbo.Квартиросъёмщики1" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Квартиросъёмщики1">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="fio" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="fio" Type="text" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Molochnikov11.dbo.Коммунальные услуги1" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Коммунальные услуги1">
+          <Key>
+            <PropertyRef Name="int" />
+            <PropertyRef Name="ФИО" />
+            <PropertyRef Name="domadress" />
+            <PropertyRef Name="nomercheta" />
+            <PropertyRef Name="kolvo" />
+            <PropertyRef Name="skvart" />
+            <PropertyRef Name="viduskugi" />
+            <PropertyRef Name="counton1metr" />
+            <PropertyRef Name="counton1man" />
+          </Key>
+          <Property Name="int" Type="int" Nullable="false" />
+          <Property Name="ФИО" Type="text" Nullable="false" />
+          <Property Name="domadress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nomercheta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="kolvo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="skvart" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="viduskugi" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="counton1metr" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="counton1man" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="марка_автомобиля">
+          <Key>
+            <PropertyRef Name="Код_марки" />
+          </Key>
+          <Property Name="Код_марки" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Название_марки" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Страна_производитель" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Завод_производитель" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Адрес" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Покупатели">
+          <Key>
+            <PropertyRef Name="Код_покупателя" />
+          </Key>
+          <Property Name="Код_покупателя" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Фамилия" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Имя" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Отчество" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Паспортные_данные" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Адрес" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Город" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Возраст" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Пол" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Продажа_автомобилей">
+          <Key>
+            <PropertyRef Name="Код_автомобиля" />
+          </Key>
+          <Property Name="Код_автомобиля" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Дата" Type="datetime" Nullable="false" />
+          <Property Name="Сотрудник" Type="int" Nullable="false" />
+          <Property Name="Автомобиль" Type="int" Nullable="false" />
+          <Property Name="Покупатель" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Сотрудник">
+          <Key>
+            <PropertyRef Name="Код_сотрудника" />
+          </Key>
+          <Property Name="Код_сотрудника" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Фамилия" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Имя" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Отчество" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Стаж" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Зарплата" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Автомобил__Марка__5070F446">
+          <End Role="марка_автомобиля" Type="Self.марка_автомобиля" Multiplicity="1" />
+          <End Role="Автомобили" Type="Self.Автомобили" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="марка_автомобиля">
+              <PropertyRef Name="Код_марки" />
+            </Principal>
+            <Dependent Role="Автомобили">
+              <PropertyRef Name="Марка" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Продажа_а__Автом__59063A47">
+          <End Role="Автомобили" Type="Self.Автомобили" Multiplicity="1" />
+          <End Role="Продажа_автомобилей" Type="Self.Продажа_автомобилей" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Автомобили">
+              <PropertyRef Name="Код_автомобиля" />
+            </Principal>
+            <Dependent Role="Продажа_автомобилей">
+              <PropertyRef Name="Автомобиль" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Продажа_а__Покуп__59FA5E80">
+          <End Role="Покупатели" Type="Self.Покупатели" Multiplicity="1" />
+          <End Role="Продажа_автомобилей" Type="Self.Продажа_автомобилей" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Покупатели">
+              <PropertyRef Name="Код_покупателя" />
+            </Principal>
+            <Dependent Role="Продажа_автомобилей">
+              <PropertyRef Name="Покупатель" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Продажа_а__Сотру__5812160E">
+          <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="1" />
+          <End Role="Продажа_автомобилей" Type="Self.Продажа_автомобилей" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Сотрудник">
+              <PropertyRef Name="Код_сотрудника" />
+            </Principal>
+            <Dependent Role="Продажа_автомобилей">
+              <PropertyRef Name="Сотрудник" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Journal_Disciplin">
+          <End Role="Disciplin" Type="Self.Disciplin" Multiplicity="0..1" />
+          <End Role="Journal" Type="Self.Journal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplin">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Journal">
+              <PropertyRef Name="disciplin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Journal_Students">
+          <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
+          <End Role="Journal" Type="Self.Journal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Journal">
+              <PropertyRef Name="students" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище Molochnikov11ModelContainer">
+          <EntitySet Name="Disciplin" EntityType="Self.Disciplin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Journal" EntityType="Self.Journal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Автомобили" EntityType="Self.Автомобили" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="марка_автомобиля" EntityType="Self.марка_автомобиля" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Покупатели" EntityType="Self.Покупатели" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Продажа_автомобилей" EntityType="Self.Продажа_автомобилей" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Сотрудник" EntityType="Self.Сотрудник" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="viduslugy" EntityType="Self.viduslugy" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [viduslugy].[id] AS [id], 
+    [viduslugy].[viduskugi] AS [viduskugi], 
+    [viduslugy].[countonmetr] AS [countonmetr], 
+    [viduslugy].[counton1chel] AS [counton1chel]
+    FROM [dbo].[viduslugy] AS [viduslugy]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Квартиросъёмщики1" EntityType="Self.Квартиросъёмщики1" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Квартиросъёмщики1].[id] AS [id], 
+    [Квартиросъёмщики1].[fio] AS [fio]
+    FROM [dbo].[Квартиросъёмщики1] AS [Квартиросъёмщики1]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Коммунальные услуги1" EntityType="Self.Коммунальные услуги1" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Коммунальные услуги1].[int] AS [int], 
+    [Коммунальные услуги1].[ФИО] AS [ФИО], 
+    [Коммунальные услуги1].[domadress] AS [domadress], 
+    [Коммунальные услуги1].[nomercheta] AS [nomercheta], 
+    [Коммунальные услуги1].[kolvo] AS [kolvo], 
+    [Коммунальные услуги1].[skvart] AS [skvart], 
+    [Коммунальные услуги1].[viduskugi] AS [viduskugi], 
+    [Коммунальные услуги1].[counton1metr] AS [counton1metr], 
+    [Коммунальные услуги1].[counton1man] AS [counton1man]
+    FROM [dbo].[Коммунальные услуги1] AS [Коммунальные услуги1]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Автомобил__Марка__5070F446" Association="Self.FK__Автомобил__Марка__5070F446">
+            <End Role="марка_автомобиля" EntitySet="марка_автомобиля" />
+            <End Role="Автомобили" EntitySet="Автомобили" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Продажа_а__Автом__59063A47" Association="Self.FK__Продажа_а__Автом__59063A47">
+            <End Role="Автомобили" EntitySet="Автомобили" />
+            <End Role="Продажа_автомобилей" EntitySet="Продажа_автомобилей" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Продажа_а__Покуп__59FA5E80" Association="Self.FK__Продажа_а__Покуп__59FA5E80">
+            <End Role="Покупатели" EntitySet="Покупатели" />
+            <End Role="Продажа_автомобилей" EntitySet="Продажа_автомобилей" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Продажа_а__Сотру__5812160E" Association="Self.FK__Продажа_а__Сотру__5812160E">
+            <End Role="Сотрудник" EntitySet="Сотрудник" />
+            <End Role="Продажа_автомобилей" EntitySet="Продажа_автомобилей" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Journal_Disciplin" Association="Self.FK_Journal_Disciplin">
+            <End Role="Disciplin" EntitySet="Disciplin" />
+            <End Role="Journal" EntitySet="Journal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Journal_Students" Association="Self.FK_Journal_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Journal" EntitySet="Journal" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Molochnikov11Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Disciplin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="grade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Journal" Relationship="Self.FK_Journal_Disciplin" FromRole="Disciplin" ToRole="Journal" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Journal">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="students" Type="Int32" />
+          <Property Name="disciplin" Type="Int32" />
+          <NavigationProperty Name="Disciplin1" Relationship="Self.FK_Journal_Disciplin" FromRole="Journal" ToRole="Disciplin" />
+          <NavigationProperty Name="Students1" Relationship="Self.FK_Journal_Students" FromRole="Journal" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="FIO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Journal" Relationship="Self.FK_Journal_Students" FromRole="Students" ToRole="Journal" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Автомобили">
+          <Key>
+            <PropertyRef Name="Код_автомобиля" />
+          </Key>
+          <Property Name="Код_автомобиля" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Название_автомобиля" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Марка" Type="Int32" Nullable="false" />
+          <Property Name="Год_производства" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Цвет" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Категория" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Цена" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="марка_автомобиля" Relationship="Self.FK__Автомобил__Марка__5070F446" FromRole="Автомобили" ToRole="марка_автомобиля" />
+          <NavigationProperty Name="Продажа_автомобилей" Relationship="Self.FK__Продажа_а__Автом__59063A47" FromRole="Автомобили" ToRole="Продажа_автомобилей" />
+        </EntityType>
+        <EntityType Name="марка_автомобиля">
+          <Key>
+            <PropertyRef Name="Код_марки" />
+          </Key>
+          <Property Name="Код_марки" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Название_марки" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Страна_производитель" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Завод_производитель" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Адрес" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Автомобили" Relationship="Self.FK__Автомобил__Марка__5070F446" FromRole="марка_автомобиля" ToRole="Автомобили" />
+        </EntityType>
+        <EntityType Name="Покупатели">
+          <Key>
+            <PropertyRef Name="Код_покупателя" />
+          </Key>
+          <Property Name="Код_покупателя" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Паспортные_данные" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Адрес" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Город" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Возраст" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Пол" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Продажа_автомобилей" Relationship="Self.FK__Продажа_а__Покуп__59FA5E80" FromRole="Покупатели" ToRole="Продажа_автомобилей" />
+        </EntityType>
+        <EntityType Name="Продажа_автомобилей">
+          <Key>
+            <PropertyRef Name="Код_автомобиля" />
+          </Key>
+          <Property Name="Код_автомобиля" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Дата" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Сотрудник" Type="Int32" Nullable="false" />
+          <Property Name="Автомобиль" Type="Int32" Nullable="false" />
+          <Property Name="Покупатель" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Автомобили" Relationship="Self.FK__Продажа_а__Автом__59063A47" FromRole="Продажа_автомобилей" ToRole="Автомобили" />
+          <NavigationProperty Name="Покупатели" Relationship="Self.FK__Продажа_а__Покуп__59FA5E80" FromRole="Продажа_автомобилей" ToRole="Покупатели" />
+          <NavigationProperty Name="Сотрудник1" Relationship="Self.FK__Продажа_а__Сотру__5812160E" FromRole="Продажа_автомобилей" ToRole="Сотрудник" />
+        </EntityType>
+        <EntityType Name="Сотрудник">
+          <Key>
+            <PropertyRef Name="Код_сотрудника" />
+          </Key>
+          <Property Name="Код_сотрудника" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Стаж" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Зарплата" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Продажа_автомобилей" Relationship="Self.FK__Продажа_а__Сотру__5812160E" FromRole="Сотрудник" ToRole="Продажа_автомобилей" />
+        </EntityType>
+        <EntityType Name="viduslugy">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="viduskugi" />
+            <PropertyRef Name="countonmetr" />
+            <PropertyRef Name="counton1chel" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="viduskugi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="countonmetr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="counton1chel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Квартиросъёмщики1">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="fio" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="fio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Коммунальные_услуги1">
+          <Key>
+            <PropertyRef Name="int" />
+            <PropertyRef Name="ФИО" />
+            <PropertyRef Name="domadress" />
+            <PropertyRef Name="nomercheta" />
+            <PropertyRef Name="kolvo" />
+            <PropertyRef Name="skvart" />
+            <PropertyRef Name="viduskugi" />
+            <PropertyRef Name="counton1metr" />
+            <PropertyRef Name="counton1man" />
+          </Key>
+          <Property Name="int" Type="Int32" Nullable="false" />
+          <Property Name="ФИО" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="domadress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nomercheta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kolvo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="skvart" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="viduskugi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="counton1metr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="counton1man" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Journal_Disciplin">
+          <End Role="Disciplin" Type="Self.Disciplin" Multiplicity="0..1" />
+          <End Role="Journal" Type="Self.Journal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplin">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Journal">
+              <PropertyRef Name="disciplin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Journal_Students">
+          <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
+          <End Role="Journal" Type="Self.Journal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Journal">
+              <PropertyRef Name="students" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Автомобил__Марка__5070F446">
+          <End Role="марка_автомобиля" Type="Self.марка_автомобиля" Multiplicity="1" />
+          <End Role="Автомобили" Type="Self.Автомобили" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="марка_автомобиля">
+              <PropertyRef Name="Код_марки" />
+            </Principal>
+            <Dependent Role="Автомобили">
+              <PropertyRef Name="Марка" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Продажа_а__Автом__59063A47">
+          <End Role="Автомобили" Type="Self.Автомобили" Multiplicity="1" />
+          <End Role="Продажа_автомобилей" Type="Self.Продажа_автомобилей" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Автомобили">
+              <PropertyRef Name="Код_автомобиля" />
+            </Principal>
+            <Dependent Role="Продажа_автомобилей">
+              <PropertyRef Name="Автомобиль" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Продажа_а__Покуп__59FA5E80">
+          <End Role="Покупатели" Type="Self.Покупатели" Multiplicity="1" />
+          <End Role="Продажа_автомобилей" Type="Self.Продажа_автомобилей" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Покупатели">
+              <PropertyRef Name="Код_покупателя" />
+            </Principal>
+            <Dependent Role="Продажа_автомобилей">
+              <PropertyRef Name="Покупатель" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Продажа_а__Сотру__5812160E">
+          <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="1" />
+          <End Role="Продажа_автомобилей" Type="Self.Продажа_автомобилей" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Сотрудник">
+              <PropertyRef Name="Код_сотрудника" />
+            </Principal>
+            <Dependent Role="Продажа_автомобилей">
+              <PropertyRef Name="Сотрудник" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Molochnikov11Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Disciplin" EntityType="Self.Disciplin" />
+          <EntitySet Name="Journal" EntityType="Self.Journal" />
+          <EntitySet Name="Students" EntityType="Self.Students" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Автомобили" EntityType="Self.Автомобили" />
+          <EntitySet Name="марка_автомобиля" EntityType="Self.марка_автомобиля" />
+          <EntitySet Name="Покупатели" EntityType="Self.Покупатели" />
+          <EntitySet Name="Продажа_автомобилей" EntityType="Self.Продажа_автомобилей" />
+          <EntitySet Name="Сотрудник" EntityType="Self.Сотрудник" />
+          <EntitySet Name="viduslugy" EntityType="Self.viduslugy" />
+          <EntitySet Name="Квартиросъёмщики1" EntityType="Self.Квартиросъёмщики1" />
+          <EntitySet Name="Коммунальные_услуги1" EntityType="Self.Коммунальные_услуги1" />
+          <AssociationSet Name="FK_Journal_Disciplin" Association="Self.FK_Journal_Disciplin">
+            <End Role="Disciplin" EntitySet="Disciplin" />
+            <End Role="Journal" EntitySet="Journal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Journal_Students" Association="Self.FK_Journal_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Journal" EntitySet="Journal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Автомобил__Марка__5070F446" Association="Self.FK__Автомобил__Марка__5070F446">
+            <End Role="марка_автомобиля" EntitySet="марка_автомобиля" />
+            <End Role="Автомобили" EntitySet="Автомобили" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Продажа_а__Автом__59063A47" Association="Self.FK__Продажа_а__Автом__59063A47">
+            <End Role="Автомобили" EntitySet="Автомобили" />
+            <End Role="Продажа_автомобилей" EntitySet="Продажа_автомобилей" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Продажа_а__Покуп__59FA5E80" Association="Self.FK__Продажа_а__Покуп__59FA5E80">
+            <End Role="Покупатели" EntitySet="Покупатели" />
+            <End Role="Продажа_автомобилей" EntitySet="Продажа_автомобилей" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Продажа_а__Сотру__5812160E" Association="Self.FK__Продажа_а__Сотру__5812160E">
+            <End Role="Сотрудник" EntitySet="Сотрудник" />
+            <End Role="Продажа_автомобилей" EntitySet="Продажа_автомобилей" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Molochnikov11ModelContainer" CdmEntityContainer="Molochnikov11Entities">
+          <EntitySetMapping Name="Disciplin">
+            <EntityTypeMapping TypeName="Molochnikov11Model.Disciplin">
+              <MappingFragment StoreEntitySet="Disciplin">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="grade" ColumnName="grade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Journal">
+            <EntityTypeMapping TypeName="Molochnikov11Model.Journal">
+              <MappingFragment StoreEntitySet="Journal">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="students" ColumnName="students" />
+                <ScalarProperty Name="disciplin" ColumnName="disciplin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="Molochnikov11Model.Students">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Molochnikov11Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Автомобили">
+            <EntityTypeMapping TypeName="Molochnikov11Model.Автомобили">
+              <MappingFragment StoreEntitySet="Автомобили">
+                <ScalarProperty Name="Код_автомобиля" ColumnName="Код_автомобиля" />
+                <ScalarProperty Name="Название_автомобиля" ColumnName="Название_автомобиля" />
+                <ScalarProperty Name="Марка" ColumnName="Марка" />
+                <ScalarProperty Name="Год_производства" ColumnName="Год_производства" />
+                <ScalarProperty Name="Цвет" ColumnName="Цвет" />
+                <ScalarProperty Name="Категория" ColumnName="Категория" />
+                <ScalarProperty Name="Цена" ColumnName="Цена" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="марка_автомобиля">
+            <EntityTypeMapping TypeName="Molochnikov11Model.марка_автомобиля">
+              <MappingFragment StoreEntitySet="марка_автомобиля">
+                <ScalarProperty Name="Код_марки" ColumnName="Код_марки" />
+                <ScalarProperty Name="Название_марки" ColumnName="Название_марки" />
+                <ScalarProperty Name="Страна_производитель" ColumnName="Страна_производитель" />
+                <ScalarProperty Name="Завод_производитель" ColumnName="Завод_производитель" />
+                <ScalarProperty Name="Адрес" ColumnName="Адрес" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Покупатели">
+            <EntityTypeMapping TypeName="Molochnikov11Model.Покупатели">
+              <MappingFragment StoreEntitySet="Покупатели">
+                <ScalarProperty Name="Код_покупателя" ColumnName="Код_покупателя" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Паспортные_данные" ColumnName="Паспортные_данные" />
+                <ScalarProperty Name="Адрес" ColumnName="Адрес" />
+                <ScalarProperty Name="Город" ColumnName="Город" />
+                <ScalarProperty Name="Возраст" ColumnName="Возраст" />
+                <ScalarProperty Name="Пол" ColumnName="Пол" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Продажа_автомобилей">
+            <EntityTypeMapping TypeName="Molochnikov11Model.Продажа_автомобилей">
+              <MappingFragment StoreEntitySet="Продажа_автомобилей">
+                <ScalarProperty Name="Код_автомобиля" ColumnName="Код_автомобиля" />
+                <ScalarProperty Name="Дата" ColumnName="Дата" />
+                <ScalarProperty Name="Сотрудник" ColumnName="Сотрудник" />
+                <ScalarProperty Name="Автомобиль" ColumnName="Автомобиль" />
+                <ScalarProperty Name="Покупатель" ColumnName="Покупатель" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Сотрудник">
+            <EntityTypeMapping TypeName="Molochnikov11Model.Сотрудник">
+              <MappingFragment StoreEntitySet="Сотрудник">
+                <ScalarProperty Name="Код_сотрудника" ColumnName="Код_сотрудника" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Стаж" ColumnName="Стаж" />
+                <ScalarProperty Name="Зарплата" ColumnName="Зарплата" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="viduslugy">
+            <EntityTypeMapping TypeName="Molochnikov11Model.viduslugy">
+              <MappingFragment StoreEntitySet="viduslugy">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="viduskugi" ColumnName="viduskugi" />
+                <ScalarProperty Name="countonmetr" ColumnName="countonmetr" />
+                <ScalarProperty Name="counton1chel" ColumnName="counton1chel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Квартиросъёмщики1">
+            <EntityTypeMapping TypeName="Molochnikov11Model.Квартиросъёмщики1">
+              <MappingFragment StoreEntitySet="Квартиросъёмщики1">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fio" ColumnName="fio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Коммунальные_услуги1">
+            <EntityTypeMapping TypeName="Molochnikov11Model.Коммунальные_услуги1">
+              <MappingFragment StoreEntitySet="Коммунальные услуги1">
+                <ScalarProperty Name="int" ColumnName="int" />
+                <ScalarProperty Name="ФИО" ColumnName="ФИО" />
+                <ScalarProperty Name="domadress" ColumnName="domadress" />
+                <ScalarProperty Name="nomercheta" ColumnName="nomercheta" />
+                <ScalarProperty Name="kolvo" ColumnName="kolvo" />
+                <ScalarProperty Name="skvart" ColumnName="skvart" />
+                <ScalarProperty Name="viduskugi" ColumnName="viduskugi" />
+                <ScalarProperty Name="counton1metr" ColumnName="counton1metr" />
+                <ScalarProperty Name="counton1man" ColumnName="counton1man" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
