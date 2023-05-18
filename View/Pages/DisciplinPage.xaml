@@ -15,9 +15,9 @@
         </Grid.ColumnDefinitions>
         <DataGrid  AutoGenerateColumns ="False" IsReadOnly="True" Name="Flowerlist" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="id " Width="*" Binding="{Binding id}"/>
-                <DataGridTextColumn Header="grade" Width="*"  Binding="{Binding grade}"/>
-                <DataGridTextColumn Header="name" Width="*"  Binding="{Binding name}"/>
+               
+                <DataGridTextColumn Header="Предметы" Width="*"  Binding="{Binding name}"/>
+                <DataGridTextColumn Header="Оценка" Width="*"  Binding="{Binding grade}"/>
                 <!--<DataGridTextColumn Header="password" Width="*" Binding="{Binding password}"/>-->
                 <!--<DataGridTextColumn Header="bouquets " Width="*" Binding="{Binding bouquets}"/>
                 <DataGridTextColumn Header="marriage" Width="*" Binding="{Binding marriage}"/>
@@ -40,13 +40,10 @@
             </Grid.RowDefinitions>
 
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-
-                <Label Content="Введите ID Дисциплины" HorizontalAlignment="Center" FontSize="14"/>
-                <TextBox Name="BarberIdTb" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-                <Label Content="Введите оценку" HorizontalAlignment="Center" FontSize="14"/>
-                <TextBox Name="BarberRoleTb" TextWrapping="Wrap" Text=""  Width="120" />
-                <Label Content="Введите название дисциплины" HorizontalAlignment="Center" FontSize="14"/>
-                <TextBox Name="BarberNameTb" TextWrapping="Wrap" Text=""  Width="120" Margin=" 0 1 0 1"/>
+                <Label Content="Введите оценку" HorizontalAlignment="Center" FontSize="25"/>
+                <TextBox Name="BarberRoleTb" TextWrapping="Wrap" Text=""  Width="179" Height="35" />
+                <Label Content="Введите название дисциплины" HorizontalAlignment="Center" FontSize="25"/>
+                <TextBox Name="BarberNameTb" TextWrapping="Wrap" Text=""  Width="179" Margin=" 0 1 0 1" Height="35"/>
                 <!--<Label Content="Введите пароль студента" HorizontalAlignment="Center" FontSize="14"/>
                 <TextBox Name="BarberNameTb1" TextWrapping="Wrap" Text=""  Width="120" Margin=" 0 1 0 1"/>-->
                 <!--<GroupBox Header="Фильтрация"
@@ -62,18 +59,16 @@
 
             </StackPanel>
 
-            <StackPanel Grid.Row="1" VerticalAlignment="Center">
-                <!--<Button x:Name="EditBB" Content="Редактировать" Click="EditBB_Click" HorizontalAlignment="Stretch"
+
+            <!--<Button x:Name="EditBB" Content="Редактировать" Click="EditBB_Click" HorizontalAlignment="Stretch"
                         Margin=" 0 10 0 0"/>-->
-                <Button x:Name="InsertBB" Content="Добавить" Click="InsertBB_Click"  HorizontalAlignment="Stretch"
-                        Margin=" 0 10 0 0"/>
-                <Button x:Name="DeleteBB" Content="Удалить" Click="DeleteBB_Click"  HorizontalAlignment="Stretch"
-                        Margin=" 0 10 0 0"/>
-                <!--<Button x:Name="Exit" Content="Выйти из учетной записи" Click="Exit_Click" HorizontalAlignment="Stretch"
+            <Button x:Name="InsertBB" Content="Добавить" Click="InsertBB_Click"  HorizontalAlignment="Stretch"
+                        Margin="124,49,117,137" Grid.Row="1"/>
+            <!--<Button x:Name="Exit" Content="Выйти из учетной записи" Click="Exit_Click" HorizontalAlignment="Stretch"
                         Margin=" 0 10 0 0"/>-->
-                <!--<Button x:Name="NextWindow" Content="Перейти к окну учета товаров" Click="NextWindow_Click" HorizontalAlignment="Stretch"
+            <!--<Button x:Name="NextWindow" Content="Перейти к окну учета товаров" Click="NextWindow_Click" HorizontalAlignment="Stretch"
                         Margin=" 0 10 0 0"/>-->
-            </StackPanel>
+
 
         </Grid>
     </Grid>

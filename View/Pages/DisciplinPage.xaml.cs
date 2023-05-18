@@ -42,13 +42,11 @@ namespace mona.View.Pages
 
         private void DeleteBB_Click(object sender, RoutedEventArgs e)
         {
-            int num = Convert.ToInt32(BarberIdTb.Text);
             //var dRow = Helpers.AuthorizationHelper.barberDb.BarberTb.Where(w => w.IDBarber == num).FirstOrDefault();
             //Helpers.AuthorizationHelper.barberDb.BarberTb.Remove(dRow);
             //Helpers.AuthorizationHelper.barberDb.SaveChanges();
             //BarberList.ItemsSource = Helpers.AuthorizationHelper.barberDb.BarberTb.ToList();
-            var dRow = ModelHelper.molochnikov11Entities.Disciplin.Where(w => w.id == num).FirstOrDefault();
-            ModelHelper.molochnikov11Entities.Disciplin.Remove(dRow);
+  
             ModelHelper.molochnikov11Entities.SaveChanges();
             Flowerlist.ItemsSource = ModelHelper.molochnikov11Entities.Disciplin.ToList();
         }
